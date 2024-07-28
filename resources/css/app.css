@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-
     h4 {
-        @apply font-bold text-lg;
+        @apply text-lg font-bold;
     }
 }

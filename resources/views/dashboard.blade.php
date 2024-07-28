@@ -5,16 +5,14 @@
         </h2>
     </x-slot>
 
+    <div class="pt-6">
+        <x-status-message />
+    </div>
+
     <div class="py-6">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
+        <livewire:links.add-link />
     </div>
     <div class="py-6">
-        <livewire:links.get-link/>
+        <livewire:links.get-link />
     </div>
 </x-app-layout>
