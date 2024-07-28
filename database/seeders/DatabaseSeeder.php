@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Link;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,8 +18,13 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Linards',
+            'email' => 'linards@linards.com',
+        ]);
+
+        Link::factory()->create([
+            'long_url' => 'https://github.com/llinards/saisini',
+            'short_url' => 'http://saisini.test/saisini_github',
         ]);
     }
 }
