@@ -23,10 +23,7 @@ class AddLink extends Component
         try {
             $this->short_url = URL::to('/').'/'.Str::random(8);;
 
-            auth()->user()->links()->create([
-                'long_url' => $this->long_url,
-                'short_url' => $this->short_url,
-            ]);
+            auth()->user()->links()->create($this->pull());
 
             session()->flash('success', 'Adrese saīsināta.');
             $this->redirect(route('dashboard'), navigate: true);
