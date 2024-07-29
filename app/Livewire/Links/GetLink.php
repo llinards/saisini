@@ -10,7 +10,7 @@ class GetLink extends Component
 
     public function mount()
     {
-        $this->links = auth()->user()->links;
+        $this->links = auth()->user()->links->sortByDesc('created_at');
     }
 
     public function render()
