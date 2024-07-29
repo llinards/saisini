@@ -9,6 +9,12 @@ class Link extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'long_url',
+        'short_url',
+        'user_id',
+    ];
+
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);

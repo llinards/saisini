@@ -3,6 +3,8 @@
 namespace App\Livewire\Links;
 
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -19,7 +21,7 @@ class AddLink extends Component
         $this->validate();
 
         try {
-            $this->short_url = 'demourl';
+            $this->short_url = URL::to('/').'/'.Str::random(8);;
 
             auth()->user()->links()->create([
                 'long_url' => $this->long_url,
@@ -27,9 +29,11 @@ class AddLink extends Component
             ]);
 
             session()->flash('success', 'Adrese saīsināta.');
+            $this->redirect(route('dashboard'), navigate: true);
         } catch (\Exception $e) {
-            Log::error($e->getMessage());
-            session()->flash('error', 'Kļūda saīsinot adresi.');
+            Log::error($e);
+            session()->flash('error', 'Kļūda saīsinot adresi. Mēģini vēlreiz.');
+            $this->redirect(route('dashboard'), navigate: true);
         }
 
     }
