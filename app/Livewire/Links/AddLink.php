@@ -14,7 +14,10 @@ class AddLink extends Component
     #[Validate('url', message: 'Nav norādīta korekta adrese.')]
     public string $long_url;
 
+    #[Validate('regex:/^[a-zā-žA-ZĀ-Ž0-9\-_]+$/', message: 'Saīsinātā adrese drīkst saturēt tikai latīņu burtus, ciparus, domuzīmes un defises.')]
     public string $short_url;
+
+    public bool $isShortUrlOptionVisible = true;
 
     public function addLink(): void
     {
