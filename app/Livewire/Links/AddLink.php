@@ -4,9 +4,9 @@ namespace App\Livewire\Links;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Str;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Tuupola\Base62;
 
 class AddLink extends Component
 {
@@ -14,19 +14,22 @@ class AddLink extends Component
     #[Validate('url', message: 'Nav norādīta korekta adrese.')]
     public string $long_url;
 
-    #[Validate('regex:/^[a-zā-žA-ZĀ-Ž0-9\-_]+$/', message: 'Saīsinātā adrese drīkst saturēt tikai latīņu burtus, ciparus, domuzīmes.')]
+    #[Validate('nullable:regex:/^[a-zā-žA-ZĀ-Ž0-9\-_]+$/', message: 'Saīsinātā adrese drīkst saturēt tikai latīņu burtus, ciparus, domuzīmes.')]
     public string $short_url;
 
-    public bool $isShortUrlOptionVisible = true;
+    public bool $isShortUrlOptionVisible = false;
 
     public function addLink(): void
     {
-//        dd($this->all());
+
         $this->validate();
-
         try {
-            $this->short_url = URL::to('/').'/'.Str::random(8);;
-
+            if (empty($this->short_url)) {
+                $base62 = new Base62();
+                $this->short_url = URL::to('/').'/'.$base62->encode(random_bytes(8));
+            } else {
+                $this->short_url = URL::to('/').'/'.$this->short_url;
+            }
             auth()->user()->links()->create($this->pull());
 
             session()->flash('success', 'Adrese saīsināta.');
@@ -37,6 +40,11 @@ class AddLink extends Component
             $this->redirect(route('dashboard'), navigate: true);
         }
 
+    }
+
+    public function toggleShortUrlOption(): void
+    {
+        $this->isShortUrlOptionVisible = !$this->isShortUrlOptionVisible;
     }
 
     public function render()
