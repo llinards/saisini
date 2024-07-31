@@ -27,14 +27,14 @@
                             <div
                                 class="mt-1 flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600"
                             >
-                                    <span class="flex select-none items-center pl-3 text-gray-500">
-                                        {{ URL::to('/') }}/
-                                    </span>
+                                <span class="flex select-none items-center pl-3 w-auto text-gray-500">
+                                    {{ URL::to('/') }}/
+                                </span>
                                 <x-text-input
                                     wire:model="short_url"
                                     name="short_url"
                                     type="text"
-                                    class=" flex-1 border-0 bg-transparent py-1.5 pl-0 focus:ring-0"
+                                    class="flex-1 border-0 bg-transparent py-1.5 pl-0 focus:ring-0"
                                 />
                             </div>
                             <x-input-error class="mt-2 font-bold" :messages="$errors->get('short_url')"/>
