@@ -9,4 +9,3 @@
         {{ session('error') }}
     </div>
 @endif
-

@@ -5,14 +5,14 @@
         </h2>
     </x-slot>
 
-    <div class="pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <x-status-message/>
+    <div class="mx-auto max-w-7xl pt-6 sm:px-6 lg:px-8">
+        <x-status-message />
     </div>
 
-    <div class="py-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <livewire:links.add-link/>
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <livewire:links.add-link />
     </div>
-    <div class="py-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <livewire:links.get-link/>
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <livewire:links.get-link />
     </div>
 </x-app-layout>
