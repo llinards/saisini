@@ -5,9 +5,9 @@
             <div class="space-y-12">
                 <div class="border-b border-neutral-200 pb-12">
                     <div class="mt-4">
-                        <x-input-label for="long_url" :value="__('Long URL')" />
-                        <x-text-input wire:model="long_url" name="long_url" type="url" class="mt-1 w-full" />
-                        <x-input-error class="mt-2 font-bold" :messages="$errors->get('long_url')" />
+                        <x-input-label for="long_url" :value="__('Long URL')"/>
+                        <x-text-input wire:model="long_url" name="long_url" type="url" class="mt-1 w-full"/>
+                        <x-input-error class="mt-2 font-bold" :messages="$errors->get('long_url')"/>
                     </div>
                     @if (! $isShortUrlOptionVisible)
                         <div class="mt-4 text-center sm:text-left">
@@ -19,12 +19,12 @@
 
                     @if ($isShortUrlOptionVisible)
                         <div class="mt-4">
-                            <x-input-label for="short_url" :value="__('Your chosen short link')" />
+                            <x-input-label for="short_url" :value="__('Your chosen short link')"/>
                             <div
-                                class="mt-1 flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600"
+                                class="mt-1 flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 py-2 px-3"
                             >
                                 <span
-                                    class="flex w-auto select-none flex-wrap items-center whitespace-nowrap pl-3 text-gray-500"
+                                    class="flex w-auto select-none flex-wrap items-center whitespace-nowrap text-gray-500"
                                 >
                                     {{ URL::to('/') }}/
                                 </span>
@@ -32,10 +32,10 @@
                                     wire:model="short_url"
                                     name="short_url"
                                     type="text"
-                                    class="flex-1 border-0 bg-transparent py-1.5 pl-0 focus:ring-0"
+                                    class="flex-1 border-0 bg-transparent p-0 focus:ring-0 shadow-none"
                                 />
                             </div>
-                            <x-input-error class="mt-2 font-bold" :messages="$errors->get('short_url')" />
+                            <x-input-error class="mt-2 font-bold" :messages="$errors->get('short_url')"/>
                         </div>
                     @endif
                 </div>
@@ -43,7 +43,7 @@
             <div class="mt-6 text-center sm:text-right">
                 <x-primary-button>
                     {{ __('Shorten') }}
-                    <x-loading-spinner />
+                    <x-loading-spinner/>
                 </x-primary-button>
             </div>
         </form>
