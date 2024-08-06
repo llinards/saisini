@@ -10,8 +10,8 @@ use Tuupola\Base62;
 
 class AddLink extends Component
 {
-    #[Validate('required', message: 'Nav norādīta adrese.')]
-    #[Validate('url', message: 'Nav norādīta korekta adrese.')]
+    #[Validate('required', message: 'No URL provided.')]
+    #[Validate('url', message: 'You didn\'t provide a valid URL.')]
     public string $long_url;
 
     #[Validate('nullable:regex:/^[a-zā-žA-ZĀ-Ž0-9\-_]+$/', message: 'Saīsinātā adrese drīkst saturēt tikai latīņu burtus, ciparus, domuzīmes.')]
@@ -32,11 +32,11 @@ class AddLink extends Component
             }
             auth()->user()->links()->create($this->pull());
 
-            session()->flash('success', 'Adrese saīsināta.');
+            session()->flash('success', 'Saite veiksmīgi saīsināta.');
             $this->redirect(route('dashboard'), navigate: true);
         } catch (\Exception $e) {
             Log::error($e);
-            session()->flash('error', 'Kļūda saīsinot adresi. Mēģini vēlreiz.');
+            session()->flash('error', 'Kaut kas nogāja greizi. Lūdzu, mēģini vēlreiz.');
             $this->redirect(route('dashboard'), navigate: true);
         }
 
