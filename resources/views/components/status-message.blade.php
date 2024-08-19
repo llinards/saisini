@@ -2,7 +2,7 @@
     <div
         x-data="{ show: true }"
         x-show="show"
-        x-init="setTimeout(() => (show = false), 3000)"
+        x-init="setTimeout(() => (show = false), 6000)"
         class="relative block w-full bg-green-500 p-4 text-center font-semibold leading-5 text-white opacity-100"
     >
         {{ session('success') }}

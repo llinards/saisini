@@ -3,7 +3,6 @@
 namespace App\Livewire\Links;
 
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\URL;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Tuupola\Base62;
@@ -14,25 +13,28 @@ class AddLink extends Component
     #[Validate('url', message: 'You didn\'t provide a valid URL.')]
     public string $long_url;
 
-    #[Validate('nullable:regex:/^[a-zā-žA-ZĀ-Ž0-9\-_]+$/', message: 'Saīsinātā adrese drīkst saturēt tikai latīņu burtus, ciparus, domuzīmes.')]
-    public string $short_url;
+    #[Validate('nullable')]
+    #[Validate('regex:/^[a-zā-žA-ZĀ-Ž0-9\-_]+$/', message: 'The shortened address can only contain Latin letters, numbers, and dashes.')]
+    #[Validate('unique:links', message: 'Such short link already exists.')]
+    public string $short_url = '';
 
     public bool $isShortUrlOptionVisible = false;
+    public bool $isShowResultVisible = false;
 
     public function addLink(): void
     {
-
         $this->validate();
-        try {
-            if (empty($this->short_url)) {
-                $base62 = new Base62();
-                $this->short_url = URL::to('/').'/'.$base62->encode(random_bytes(8));
-            } else {
-                $this->short_url = URL::to('/').'/'.$this->short_url;
-            }
-            auth()->user()->links()->create($this->pull());
 
+//        Move this to the seprate method
+        if (empty($this->short_url)) {
+            $base62 = new Base62();
+            $this->short_url = $base62->encode(random_bytes(8));
+        }
+
+        try {
+            auth()->user()->links()->create($this->pull());
             session()->flash('success', 'Saite veiksmīgi saīsināta.');
+            $this->isShowResultVisible = true;
             $this->redirect(route('dashboard'), navigate: true);
         } catch (\Exception $e) {
             Log::error($e);

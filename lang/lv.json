@@ -37,7 +37,10 @@
     "Short Link": "Saīsinātā saite",
     "No URL provided.": "Nav norādīta saite.",
     "You didn\\'t provide a valid URL.": "Nav norādīta korekta saite.",
-    "The shortened address can only contain Latin letters, numbers, and dashes.": "Saīsinātā adrese drīkst saturēt tikai latīņu burtus, ciparus, domuzīmes.",
+    "The shortened address can only contain Latin letters, numbers, and dashes.": "Saīsinātā saite drīkst saturēt tikai latīņu burtus, ciparus, domuzīmes.",
     "Link shortened successfully.": "Saite veiksmīgi saīsināta.",
-    "Something went wrong. Please try again.": "Kaut kas nogāja greizi. Lūdzu, mēģini vēlreiz."
+    "Something went wrong. Please try again.": "Kaut kas nogāja greizi. Lūdzu, mēģini vēlreiz.",
+    "Maximum length of the shortened address is 8 characters.": "Saīsinātās adreses maksimālais garums ir 8 rakstzīmes.",
+    "Such short link already exists.": "Saīsinātā saite jau pastāv.",
+    "Are you sure?": "Vai tiešām vēlies dzēst?"
 }

@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
 
         Link::factory()->create([
             'long_url' => 'https://github.com/llinards/saisini',
-            'short_url' => 'http://saisini.test/saisini_github',
+            'short_url' => 'saisini_github',
         ]);
     }
 }
