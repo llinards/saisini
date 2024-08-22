@@ -3,12 +3,10 @@
 use App\Http\Controllers\RedirectController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
+Route::view('/', 'dashboard')
+    ->name('dashboard');
 
 Route::group(['middleware' => 'auth'], static function () {
-    Route::view('dashboard', 'dashboard')
-        ->name('dashboard');
-
     Route::view('profile', 'profile')
         ->name('profile');
 });

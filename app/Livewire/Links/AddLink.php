@@ -10,7 +10,7 @@ use Tuupola\Base62;
 class AddLink extends Component
 {
     #[Validate('required', message: 'No URL provided.')]
-    #[Validate('url', message: 'You didn\'t provide a valid URL.')]
+    #[Validate('url', message: 'You didnt provide a valid URL.')]
     public string $long_url;
 
     #[Validate('nullable')]
@@ -19,34 +19,33 @@ class AddLink extends Component
     public string $short_url = '';
 
     public bool $isShortUrlOptionVisible = false;
-    public bool $isShowResultVisible = false;
 
     public function addLink(): void
     {
         $this->validate();
-
-//        Move this to the seprate method
         if (empty($this->short_url)) {
-            $base62 = new Base62();
-            $this->short_url = $base62->encode(random_bytes(8));
+            $this->encodeShortUrl();
         }
-
         try {
             auth()->user()->links()->create($this->pull());
             session()->flash('success', 'Saite veiksmīgi saīsināta.');
-            $this->isShowResultVisible = true;
             $this->redirect(route('dashboard'), navigate: true);
         } catch (\Exception $e) {
             Log::error($e);
             session()->flash('error', 'Kaut kas nogāja greizi. Lūdzu, mēģini vēlreiz.');
             $this->redirect(route('dashboard'), navigate: true);
         }
+    }
 
+    private function encodeShortUrl(): void
+    {
+        $base62          = new Base62();
+        $this->short_url = $base62->encode(random_bytes(random_int(1, 8)));
     }
 
     public function toggleShortUrlOption(): void
     {
-        $this->isShortUrlOptionVisible = !$this->isShortUrlOptionVisible;
+        $this->isShortUrlOptionVisible = ! $this->isShortUrlOptionVisible;
     }
 
     public function render()

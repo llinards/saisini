@@ -36,7 +36,7 @@
     "Link": "Adrese",
     "Short Link": "Saīsinātā saite",
     "No URL provided.": "Nav norādīta saite.",
-    "You didn\\'t provide a valid URL.": "Nav norādīta korekta saite.",
+    "You didnt provide a valid URL.": "Nav norādīta korekta saite. Pārliecinies, ka tā sākas ar http vai https.",
     "The shortened address can only contain Latin letters, numbers, and dashes.": "Saīsinātā saite drīkst saturēt tikai latīņu burtus, ciparus, domuzīmes.",
     "Link shortened successfully.": "Saite veiksmīgi saīsināta.",
     "Something went wrong. Please try again.": "Kaut kas nogāja greizi. Lūdzu, mēģini vēlreiz.",
