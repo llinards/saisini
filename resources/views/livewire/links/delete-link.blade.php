@@ -1,6 +1,6 @@
 <button
     type="button"
-    onclick="return confirm('{{ __('Are you sure?') }}');"
+    wire:confirm="Vai tiešām vēlies dzēst?"
     wire:click="deleteLink({{ $link->id }})"
 >
     <svg
