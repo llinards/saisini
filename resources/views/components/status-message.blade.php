@@ -1,21 +1,14 @@
-@if (session('success'))
-    <div
-        x-data="{ show: true }"
-        x-show="show"
-        x-init="setTimeout(() => (show = false), 6000)"
-        class="relative block w-full bg-green-500 p-4 text-center font-semibold leading-5 text-white opacity-100"
-    >
-        {{ session('success') }}
-    </div>
-@endif
+@php
+    $status = session('success') ? 'success' : (session('error') ? 'error' : null);
+@endphp
 
-@if (session('error'))
+@if ($status)
     <div
         x-data="{ show: true }"
         x-show="show"
         x-init="setTimeout(() => (show = false), 6000)"
-        class="relative block w-full bg-red-500 p-4 text-center font-semibold leading-5 text-white opacity-100"
+        class="relative block w-full p-4 text-center font-semibold leading-5 text-white opacity-100 {{ $status === 'success' ? 'bg-green-500' : 'bg-red-500' }}"
     >
-        {{ session('error') }}
+        {{ session($status) }}
     </div>
 @endif
