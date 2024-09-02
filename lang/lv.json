@@ -42,5 +42,6 @@
     "Something went wrong. Please try again.": "Kaut kas nogāja greizi. Lūdzu, mēģini vēlreiz.",
     "Maximum length of the shortened address is 8 characters.": "Saīsinātās adreses maksimālais garums ir 8 rakstzīmes.",
     "Such short link already exists.": "Saīsinātā saite jau pastāv.",
-    "Are you sure?": "Vai tiešām vēlies dzēst?"
+    "Are you sure?": "Vai tiešām vēlies dzēst?",
+    "Created": "Izveidots"
 }
