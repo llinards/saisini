@@ -1,6 +1,9 @@
 <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
     <div class="p-6 text-gray-900">
-        <h4>{{ __('Shorten URL') }}</h4>
+        {{--        <h4>{{ __('Shorten URL') }}</h4>--}}
+        <div class="flex justify-center">
+            <img class="md:w-1/3" src="{{asset('storage/logo.png')}}"/>
+        </div>
         <form wire:submit="addLink">
             <div class="space-y-12">
                 <div class="border-b border-neutral-200 pb-12">
