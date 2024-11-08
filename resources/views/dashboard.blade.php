@@ -1,14 +1,14 @@
 <x-app-layout>
     <div class="mx-auto max-w-7xl pt-6 sm:px-6 lg:px-8">
-        <x-status-message/>
+        <x-status-message />
     </div>
 
     <div class="mx-auto w-full max-w-5xl px-4 py-6 sm:px-6 lg:px-8">
-        <livewire:links.add-link/>
+        <livewire:links.add-link />
     </div>
     @auth
         <div class="mx-auto w-full max-w-5xl px-4 py-6 sm:px-6 lg:px-8">
-            <livewire:links.get-link/>
+            <livewire:links.get-link />
         </div>
     @endauth
 </x-app-layout>

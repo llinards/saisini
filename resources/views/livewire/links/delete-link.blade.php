@@ -1,8 +1,4 @@
-<button
-    type="button"
-    wire:confirm="Vai tiešām vēlies dzēst?"
-    wire:click="deleteLink({{ $link->id }})"
->
+<button type="button" wire:confirm="Vai tiešām vēlies dzēst?" wire:click="deleteLink({{ $link->id }})">
     <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
