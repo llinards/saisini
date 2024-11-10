@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Links;
 
+use App\Models\Link;
 use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -27,7 +28,12 @@ class AddLink extends Component
             $this->encodeShortUrl();
         }
         try {
-            auth()->user()->links()->create($this->pull());
+            if (auth()->check()) {
+                auth()->user()->links()->create($this->pull());
+            } else {
+                Link::create($this->pull());
+            }
+
             session()->flash('success', 'Saite veiksmīgi saīsināta.');
             $this->redirect(route('dashboard'), navigate: true);
         } catch (\Exception $e) {
