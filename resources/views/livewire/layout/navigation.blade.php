@@ -15,7 +15,7 @@ new class extends Component {
     }
 }; ?>
 
-<nav x-data="{ open: false }" class="border-b border-gray-100 bg-white shadow">
+<nav x-data="{ open: false }" class="border-b border-gray-100 bg-white shadow w-full">
     <!-- Primary Navigation Menu -->
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 justify-between">
@@ -23,7 +23,7 @@ new class extends Component {
                 <!-- Logo -->
                 <div class="flex w-1/3 shrink-0 items-center md:w-1/6">
                     <a href="{{ route('dashboard') }}" wire:navigate>
-                        <x-application-logo class="block text-gray-800" />
+                        <x-application-logo class="block text-gray-800"/>
                     </a>
                 </div>
 
