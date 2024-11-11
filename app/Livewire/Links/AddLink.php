@@ -3,10 +3,10 @@
 namespace App\Livewire\Links;
 
 use App\Models\Link;
+use App\Services\UrlEncoder;
 use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use Tuupola\Base62;
 
 class AddLink extends Component
 {
@@ -21,11 +21,18 @@ class AddLink extends Component
 
     public bool $isShortUrlOptionVisible = false;
 
+    protected UrlEncoder $UrlEncoder;
+
+    public function __construct()
+    {
+        $this->UrlEncoder = new UrlEncoder();
+    }
+
     public function addLink(): void
     {
         $this->validate();
         if (empty($this->short_url)) {
-            $this->encodeShortUrl();
+            $this->short_url = $this->UrlEncoder->encode();
         }
         try {
             if (auth()->check()) {
@@ -43,11 +50,6 @@ class AddLink extends Component
         }
     }
 
-    private function encodeShortUrl(): void
-    {
-        $base62          = new Base62();
-        $this->short_url = $base62->encode(random_bytes(random_int(1, 8)));
-    }
 
     public function toggleShortUrlOption(): void
     {
