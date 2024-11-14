@@ -28,13 +28,14 @@ class AddLink extends Component
         $this->UrlEncoder = new UrlEncoder();
     }
 
-    public function addLink(): void
+    public function create(): void
     {
         $this->validate();
         if (empty($this->short_url)) {
             $this->short_url = $this->UrlEncoder->encode();
         }
         try {
+            $this->dispatch('short-link-created', $this->short_url);
             if (auth()->check()) {
                 auth()->user()->links()->create($this->pull());
             } else {
@@ -42,7 +43,6 @@ class AddLink extends Component
             }
 
             session()->flash('success', 'Saite veiksmīgi saīsināta.');
-            $this->redirect(route('dashboard'), navigate: true);
         } catch (\Exception $e) {
             Log::error($e);
             session()->flash('error', 'Kaut kas nogāja greizi. Lūdzu, mēģini vēlreiz.');
