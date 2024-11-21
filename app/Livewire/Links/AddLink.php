@@ -5,6 +5,7 @@ namespace App\Livewire\Links;
 use App\Models\Link;
 use App\Services\UrlEncoder;
 use Illuminate\Support\Facades\Log;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -20,6 +21,8 @@ class AddLink extends Component
     public string $short_url = '';
 
     public bool $isShortUrlOptionVisible = false;
+    public bool $showCreatedLink = false;
+    public string $created_short_link = '';
 
     protected UrlEncoder $UrlEncoder;
 
@@ -35,13 +38,15 @@ class AddLink extends Component
             $this->short_url = $this->UrlEncoder->encode();
         }
         try {
-            $this->dispatch('short-link-created', $this->short_url);
             if (auth()->check()) {
-                auth()->user()->links()->create($this->pull());
+                auth()->user()->links()->create($this->all());
             } else {
-                Link::create($this->pull());
+                Link::create($this->all());
             }
-
+            $this->created_short_link = $this->short_url;
+            //ar emit varēsi notestēt paziņojumu pozīciju
+            $this->dispatch('short-link-created');
+            $this->reset(['long_url', 'short_url']);
             session()->flash('success', 'Saite veiksmīgi saīsināta.');
         } catch (\Exception $e) {
             Log::error($e);
@@ -50,6 +55,11 @@ class AddLink extends Component
         }
     }
 
+    #[On('short-link-created')]
+    public function showCreatedLink()
+    {
+        $this->showCreatedLink = true;
+    }
 
     public function toggleShortUrlOption(): void
     {

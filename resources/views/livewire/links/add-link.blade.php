@@ -44,7 +44,16 @@
                     @endif
                 </div>
             </div>
-            <livewire:links.show-created-link :short_url="$short_url"/>
+            @if($showCreatedLink)
+                <div class="mt-4">
+                    <p>{{ __('Generated link is') }} -
+                        <a class="pr-2 text-blue-500 underline hover:text-blue-700" target="_blank"
+                           href="{{ URL::to('/') . '/' . $created_short_link }}">
+                            {{ URL::to('/') . '/' . $created_short_link }}
+                        </a>
+                    </p>
+                </div>
+            @endif
             <div class="mt-6 text-center sm:text-right">
                 <x-primary-button>
                     {{ __('Shorten') }}
