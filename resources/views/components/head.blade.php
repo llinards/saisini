@@ -18,6 +18,24 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"/>
     <link rel="manifest" href="/favicon/site.webmanifest"/>
 
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://saisini.lv/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="saisini.lv - garo interneta adrešu saīsinātājs un QR attēlu veidotājs">
+    <meta property="og:description"
+          content="saisini.lv - Saīsiniet saites un ģenerējiet QR kodus ātri un viegli! Mūsu rīks nodrošina saīsinātas URL saites un pielāgojamus QR kodus, kas palīdz uzlabot jūsu saišu dalīšanos un sekošanu tiešsaistē.">
+    <meta property="og:image" content="{{ asset('storage/logo.png') }}">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="saisini.lv">
+    <meta property="twitter:url" content="https://saisini.lv/">
+    <meta name="twitter:title" content="saisini.lv - garo interneta adrešu saīsinātājs un QR attēlu veidotājs">
+    <meta name="twitter:description"
+          content="saisini.lv - Saīsiniet saites un ģenerējiet QR kodus ātri un viegli! Mūsu rīks nodrošina saīsinātas URL saites un pielāgojamus QR kodus, kas palīdz uzlabot jūsu saišu dalīšanos un sekošanu tiešsaistē.">
+    <meta name="twitter:image" content="{{ asset('storage/logo.png') }}">
+    
+
     {{-- Google tag (gtag.js) --}}
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZFBDKJCN44"></script>
     <script>
